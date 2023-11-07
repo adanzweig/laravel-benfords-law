@@ -9,7 +9,6 @@ This Laravel project provides an API endpoint to check if a given set of integer
 - PHP >= 7.3
 - Composer
 - Laravel >= 8.x
-- MySQL or any other DBMS supported by Laravel (if using database features)
 
 ### Installation
 1. Clone the repository:
@@ -24,19 +23,11 @@ This Laravel project provides an API endpoint to check if a given set of integer
    ```sh
    composer install
    ```
-4. Copy the `.env.example` file to create a `.env` file:
-   ```sh
-   cp .env.example .env
-   ```
-5. Generate the application key:
+4. Generate the application key:
    ```sh
    php artisan key:generate
    ```
-6. Run migrations (if applicable):
-   ```sh
-   php artisan migrate
-   ```
-7. Start the development server:
+5. Start the development server:
    ```sh
    php artisan serve
    ```
@@ -81,9 +72,6 @@ Execute the PHPUnit tests with the following command:
 The API will return appropriate HTTP status codes for various error states:
 
 - `400 Bad Request`: Input validation errors (e.g., non-integer or negative numbers).
-
-## Security
-The project uses Laravel's built-in security features, such as prepared SQL statements, to protect against SQL injection and other common security vulnerabilities.
 
 ## Contact Information
 For any queries or further assistance, please contact [Adan Zweig] at [adanzweig@gmail.com].
