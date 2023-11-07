@@ -1,0 +1,87 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Benford's Law API",
+      "version": "1.0.0",
+      "description": "This API checks if a given set of integers conforms to Benford's Law."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8000/api",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/check-benfords-law": {
+        "post": {
+          "summary": "Check Benford's Law Conformity",
+          "description": "Accepts a set of integers and returns whether they conform to Benford's Law.",
+          "operationId": "checkBenfordsLaw",
+          "tags": [
+            "Benford's Law"
+          ],
+          "requestBody": {
+            "description": "Array of integers to check for Benford's Law conformity.",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "numbers": {
+                      "type": "array",
+                      "description": "The array of integers to check.",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "example": {
+                    "numbers": [123, 111, 145, 160, 174, 182, 191, 202, 210]
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully checked the numbers against Benford's Law",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "conforms_to_benford": {
+                        "type": "boolean",
+                        "description": "Whether the numbers conform to Benford's Law"
+                      },
+                      "observed_distribution": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "number"
+                        },
+                        "description": "The observed distribution of first digits"
+                      },
+                      "benfords_distribution": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "number"
+                        },
+                        "description": "The expected Benford's distribution"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input provided"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {}
+    }
+  }
